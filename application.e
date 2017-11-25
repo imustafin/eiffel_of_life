@@ -13,6 +13,7 @@ feature {NONE}
 	make_and_launch
 		do
 			default_create
+			first_window.set_minimum_size (400, 400)
 			prepare
 			launch
 		end
