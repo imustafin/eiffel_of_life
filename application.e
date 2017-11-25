@@ -118,7 +118,6 @@ feature {NONE} -- Game of Life generations
 				loop
 					random.forth
 					status := ((random.item \\ 2) = 0)
-					print (status.out + "%N")
 					cell_grid.set_cell_status (status, i, j)
 					j := j + 1
 				end
