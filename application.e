@@ -88,9 +88,9 @@ feature {NONE} -- Game of Life generations
 				loop
 					status := cell_grid.cell_at (i, j)
 					if status then
-						pixmap.set_foreground_color (create {EV_COLOR}.make_with_rgb (1, 1, 1))
-					else
 						pixmap.set_foreground_color (create {EV_COLOR}.make_with_rgb (0, 0, 0))
+					else
+						pixmap.set_foreground_color (create {EV_COLOR}.make_with_rgb (1, 1, 1))
 					end
 					pixmap.fill_rectangle (square_size * (i - 1), square_size * (j - 1), square_size, square_size)
 					j := j + 1
