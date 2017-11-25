@@ -6,9 +6,10 @@ create
 
 feature {NONE} -- Initialization
 
-	make
+	make (dims: INTEGER)
 			-- Initialization for `Current'.
 		do
+			dim := dims
 			create current_grid.make_filled (False, dim, dim)
 		end
 
@@ -20,6 +21,7 @@ feature --Access
 	cell_at (i, j: INTEGER): BOOLEAN
 			-- Value of cell at (i , j)
 		do
+			Result := current_grid[i, j]
 		end
 
 feature -- Status Setting
