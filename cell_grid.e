@@ -55,7 +55,10 @@ feature -- Basic operations
 		local
 			i,j:INTEGER
 			living_neighbors:INTEGER
+			temp_grid:ARRAY2[BOOLEAN]
 		do
+			create temp_grid.make_filled (False, dim, dim)
+			temp_grid.copy (current_grid)
 			from
 				i:=1
 			until
@@ -66,16 +69,24 @@ feature -- Basic operations
 				until
 					j = current_grid.width
 				loop
-					if current_grid[i-1,j-1] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i-1,j] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i-1,j+1] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i,j-1] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i,j+1] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i+1,j-1] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i+1,j] then living_neighbors := living_neighbors + 1 end
-					if current_grid[i+1,j+1] then living_neighbors := living_neighbors + 1 end
+					living_neighbors:= 0
+					if i > 1 then
+						if j>1 and then temp_grid[i-1,j-1] then living_neighbors := living_neighbors + 1 end
+						if temp_grid[i-1,j] then living_neighbors := living_neighbors + 1 end
+						if j<dim and then temp_grid[i-1,j+1] then living_neighbors := living_neighbors + 1 end
+					end
+
+					if j>1 and then temp_grid[i,j-1] then living_neighbors := living_neighbors + 1 end
+					if j<dim and then temp_grid[i,j+1] then living_neighbors := living_neighbors + 1 end
+					if i < dim then
+						if j>1 and then temp_grid[i+1,j-1] then living_neighbors := living_neighbors + 1 end
+						if temp_grid[i+1,j] then living_neighbors := living_neighbors + 1 end
+						if j<dim and then temp_grid[i+1,j+1] then living_neighbors := living_neighbors + 1 end
+					end
 					set_cell_status (new_state_of_cell(i,j, living_neighbors),i,j)
+					j := j + 1
 				end
+				i := i + 1
 			end
 
 		end
