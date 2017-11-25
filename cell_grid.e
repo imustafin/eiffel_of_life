@@ -6,12 +6,20 @@ create
 
 feature {NONE} -- Initialization
 
+<<<<<<< HEAD
 	make(dimensions:INTEGER)
+=======
+	make (dims: INTEGER)
+>>>>>>> 3e7cf6af93e1a376743ded21e5f8f9b6a87357ca
 			-- Initialization for `Current'.
 		require
 			dimensions > 0
 		do
+<<<<<<< HEAD
 			dim := dimensions
+=======
+			dim := dims
+>>>>>>> 3e7cf6af93e1a376743ded21e5f8f9b6a87357ca
 			create current_grid.make_filled (False, dim, dim)
 		ensure
 			dim = dimensions
@@ -29,9 +37,13 @@ feature --Access
 			i >= 1 and j >= 1
 			i <= dim and j <=dim
 		do
+<<<<<<< HEAD
 			Result := current_grid[i,j]
 		ensure
 			Result=current_grid[i,j]
+=======
+			Result := current_grid[i, j]
+>>>>>>> 3e7cf6af93e1a376743ded21e5f8f9b6a87357ca
 		end
 
 feature -- Status Setting
