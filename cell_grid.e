@@ -62,12 +62,12 @@ feature -- Basic operations
 			from
 				i:=1
 			until
-				i = current_grid.height
+				i = current_grid.height+1
 			loop
 				from
 					j:=1
 				until
-					j = current_grid.width
+					j = current_grid.width+1
 				loop
 					living_neighbors:= 0
 					if i > 1 then
